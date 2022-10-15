@@ -1,4 +1,4 @@
-isExistApp = `pm2 status`
+isExistApp=`pm2 status`
 if [[ -n $isExistApp ]]; then 
     pm2 stop all
     pm2 delete all
