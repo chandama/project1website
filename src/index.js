@@ -8,10 +8,10 @@ app.set('view engine', 'ejs');
 const knex = require('knex')({
     client: 'mysql',
     connection: {
-        host: 'rds-terraform.c6qwovhemjl6.us-west-1.rds.amazonaws.com',
+        host: 'localhost', //'rds-terraform.c6qwovhemjl6.us-west-1.rds.amazonaws.com',
         port: 3306,
         user: 'root',
-        password: 'asdfghjklasdfghjkl',
+        password: 'admin',
         database: 'icecreamdb'
     }
 });
@@ -19,7 +19,7 @@ const knex = require('knex')({
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
-    knex.select().from('products')
+    knex.select().from('mytable')
         .then((results) => {
             res.render('pages/index', {
                 results: results
@@ -27,5 +27,5 @@ app.get('/', function(req, res) {
         });
 });
 
-app.listen(8000);
-console.log("Server on port 8000");
+app.listen(80);
+console.log("Server on port 80");
